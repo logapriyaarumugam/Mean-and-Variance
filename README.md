@@ -48,33 +48,44 @@ It shows the distance of a random variable from its mean. It is calcualted as
 
 # Program :
 import numpy as np
-L = [int(i) for i in input("Enter arrival data: ").split()]
+
+# Input list
+L = [int(i) for i in input("Enter values: ").split()]
 N = len(L)
 M = max(L)
-X = []
+
+x = []
 f = []
-for i in range(M + 1):
+
+# Frequency calculation
+for i in range(M+1):
     c = 0
     for j in range(N):
         if L[j] == i:
             c += 1
     f.append(c)
-    X.append(i)
+    x.append(i)
+
+# Total frequency
 sf = np.sum(f)
-p = [f[i] / sf for i in range(M + 1)]
-mean = np.inner(X, p)
-EX2 = np.inner(np.square(X), p)
+
+# Probability distribution
+p = []
+for i in range(M+1):
+    p.append(f[i] / sf)
+
+# Mean, Variance, Standard Deviation
+mean = np.inner(x, p)
+EX2 = np.inner(np.square(x), p)
 var = EX2 - mean**2
-SD = np.sqrt(var)
-print("\nX\tp(x)")
-for i in range(M + 1):
-    if f[i] > 0:   # Only print arrivals that actually occurred
-        print(f"{X[i]}\t{p[i]:.3f}")
-print(f"\nThe Mean arrival rate is {mean:.3f}")
-print(f"The Variance of arrival from feeder is {var:.3f}")
-print(f"The Standard deviation of arrival from feeder is {SD:.3f}")
+sd = np.sqrt(var)
 
-
+# Output
+print("x values:", x)
+print("p(x) values:", ["%.3f" % val for val in p])
+print("The Mean arrival rate is %.3f" % mean)
+print("The Variance of arrival from feeder is %.3f" % var)
+print("The Standard deviation of arrival from feeder is %.3f" % sd)
 # Output : 
 <img width="1187" height="745" alt="Screenshot 2026-02-26 155440" src="https://github.com/user-attachments/assets/f508b0f8-eee1-4e5b-b6fc-f9bf6f79a582" />
 
