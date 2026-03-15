@@ -88,7 +88,9 @@ for i in range(M + 1):
         print(f"{X[i]}\t{p[i]:.3f}")
 
 print(f"\nThe Mean arrival rate is {mean:.3f}")
+
 print(f"The Variance of arrival from feeder is {var:.3f}")
+
 print(f"The Standard deviation of arrival from feeder is {SD:.3f}")
 
 # Output : 
